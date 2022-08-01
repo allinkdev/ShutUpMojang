@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "shutupmojang",
+  "version": "${version}",
+  "name": "ShutUpMojang",
+  "description": "",
+  "authors": [
+    "Allink"
+  ],
+  "icon": "assets/shutupmojang/icon.png",
+  "contact": {
+    "repo": "https://github.com/allinkdev/ShutUpMojang.git"
+  },
+  "license": "UNLICENSE",
+  "environment": "client",
+  "mixins": [
+    "ShutUpMojang.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "minecraft": "1.19.1"
+  }
+}
