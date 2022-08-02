@@ -2,10 +2,13 @@ package allink.shutupmojang.mixin;
 
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
+import net.minecraft.client.gui.hud.MessageIndicator.Icon;
 import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ChatHud.class)
 public class RemoveSystemMessageIndicators {
@@ -17,5 +20,10 @@ public class RemoveSystemMessageIndicators {
 		}
 
 		DrawableHelper.fill(matrixStack, x1, y1, x2, y2, color);
+	}
+
+	@Inject(method = "drawIndicatorIcon", at = @At("HEAD"), cancellable = true)
+	public void drawIndicatorIcon(MatrixStack matrices, int x, int y, Icon icon, CallbackInfo ci) {
+		ci.cancel();
 	}
 }
